@@ -8,13 +8,13 @@ from sqlalchemy import Table, Column, String, ForeignKey, Integer, Float
 from os import getenv
 
 
-place_amenity_table = Table("place_amenity", Base.metadata,
-                      Column("place_id", String(60),
-                             ForeignKey("places.id"),
-                             primary_key=True, nullable=False),
-                      Column("amenity_id", String(60),
-                             ForeignKey("amenities.id"), primary_key=True,
-                             nullable=False))
+# place_amenity_table = Table("place_amenity", Base.metadata,
+#                       Column("place_id", String(60),
+#                              ForeignKey("places.id"),
+#                              primary_key=True, nullable=False),
+#                       Column("amenity_id", String(60),
+#                              ForeignKey("amenities.id"), primary_key=True,
+#                              nullable=False))
 
 
 class Place(BaseModel, Base):
@@ -34,31 +34,31 @@ class Place(BaseModel, Base):
 
     reviews = relationship("Review", backref="place", cascade="all, delete")
 
-    amenities = relationship("Amenity", secondary="place_amenity",
-                             viewonly=False)
+#    amenities = relationship("Amenity", secondary="place_amenity",
+#                              viewonly=False)
 
-    if getenv("HBNB_TYPE_STORAGE") != "db":
-        @property
-        def reviews(self):
-            """
-            """
-            place_reviews = []
-            reviews_dict = models.storage.all(Review)
-            for review in reviews.values():
-                if review.place_id == self.id:
-                    place_reviews.append(review)
+#     if getenv("HBNB_TYPE_STORAGE") != "db":
+#         @property
+#         def reviews(self):
+#             """
+#             """
+#             place_reviews = []
+#             reviews_dict = models.storage.all(Review)
+#             for review in reviews.values():
+#                 if review.place_id == self.id:
+#                     place_reviews.append(review)
 
-            return place_reviews
+#             return place_reviews
 
-        @property
-        def amenities(self):
-            """
-            """
-            return amenity_ids
+#         @property
+#         def amenities(self):
+#             """
+#             """
+#             return amenity_ids
 
-        @amenities.setter
-        def amenities(self, obj):
-            """
-            """
-            if isinstance(obj, Amenity) and obj.id not in self.amenity_ids:
-                self.amenity_ids.append(obj.id)
+#         @amenities.setter
+#         def amenities(self, obj):
+#             """
+#             """
+#             if isinstance(obj, Amenity) and obj.id not in self.amenity_ids:
+#                 self.amenity_ids.append(obj.id)
