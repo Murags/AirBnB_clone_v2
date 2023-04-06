@@ -51,5 +51,5 @@ def deploy():
 
     if archive_name == None:
         return False
-    else
+    else:
         do_deploy(archive_name)
