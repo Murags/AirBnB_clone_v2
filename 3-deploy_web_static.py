@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """Creates an archive for the web_static folder"""
-from fabric.api import local, task
+from fabric.api import local, task, runs_once
 from datetime import datetime
 from fabric.api import run, put, env, with_settings
 
