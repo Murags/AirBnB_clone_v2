@@ -1,5 +1,8 @@
+#!/usr/bin/python3
+"""Creates an archive for the web_static folder"""
 from fabric.api import local
 from datetime import datetime
+
 
 def do_pack():
     try:
