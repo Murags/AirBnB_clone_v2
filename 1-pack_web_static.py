@@ -5,6 +5,7 @@ from datetime import datetime
 
 
 def do_pack():
+    """Executes commands locally to create archive"""
     try:
         time = datetime.now()
         str_time = time.strftime("%Y%m%d%H%M%S")
