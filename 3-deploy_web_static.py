@@ -50,4 +50,4 @@ def deploy():
     if archive_name == None:
         return False
     else
-        return do_deploy(archive_name)
+        do_deploy(archive_name)
