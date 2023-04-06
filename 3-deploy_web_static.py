@@ -40,6 +40,11 @@ def do_deploy(archive_path):
     run('ln -s /data/web_static/releases/{}/ /data/web_static/current'.format(folder_extract))
 
 def deploy():
+    """_summary_
+
+    Returns:
+        _type_: _description_
+    """
     archive_name = do_pack()
 
     if archive_name == None:
