@@ -1,11 +1,13 @@
 #!/usr/bin/python3
 """ Place Module for HBNB project """
+from models.amenity import Amenity
 from models.base_model import BaseModel
 from models.base_model import Base
 import models
 from sqlalchemy.orm import relationship
 from sqlalchemy import Table, Column, String, ForeignKey, Integer, Float
 from os import getenv
+from models.review import Review
 
 
 place_amenity_table = Table("place_amenity", Base.metadata,
@@ -44,7 +46,7 @@ class Place(BaseModel, Base):
             """
             place_reviews = []
             reviews_dict = models.storage.all(Review)
-            for review in reviews.values():
+            for review in reviews_dict.values():
                 if review.place_id == self.id:
                     place_reviews.append(review)
 
